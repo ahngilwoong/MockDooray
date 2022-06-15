@@ -1,0 +1,40 @@
+###
+###
+GET http://localhost:1004/member/findmember/dksrlfdnd1
+
+<> 2022-06-14T071508.200.json
+<> 2022-06-14T070605.200.json
+
+###
+POST http://localhost:1004/member/addmember
+Content-Type: application/json
+
+{
+  "memberNum": 1,
+  "projectNum": 3,
+  "memberId":"J. K. Rowling",
+  "memberName":"J. K. Rowling"
+}
+
+###
+GET http://localhost:1004/mockdooray/projects?memberNum=1
+
+<> 2022-06-14T071721.200.json
+<> 2022-06-14T071422.200.json
+<> 2022-06-14T071355.400.json
+
+###
+POST http://localhost:1004/mockdooray/createproject
+Content-Type: application/json
+
+{
+  "projectName": "좋은 프로젝트",
+  "createdMemberId": "dksrlfdnd1",
+  "userName": "안길웅"
+
+}
+
+###
+GET http://localhost:1004/mockdooray/projects/1/tasks
+
+<> 2022-06-14T072120.200.json

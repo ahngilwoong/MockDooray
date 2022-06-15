@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+</head>
+<body>
+    <a th:text="회원가입"></a>
+    <form method="post" action="/register/create">
+        ID: <input type="text" name="userId" /><br />
+        Password: <input type="password" name="userPwd" /><br />
+        email : <input type="text" name="userEmail" /><br />
+        RealName : <input type="text" name="userName" /><br />
+        <input type="hidden" name="userStatus" aria-valuetext="가입"/><br />
+<!--        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
+        <input type="submit" />
+    </form>
+
+
+</body>
+</html>

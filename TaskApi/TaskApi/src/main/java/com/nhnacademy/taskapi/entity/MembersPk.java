@@ -21,5 +21,5 @@ public class MembersPk implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "project_num")
-    private Projects projectNum;
+    private Projects project;
 }

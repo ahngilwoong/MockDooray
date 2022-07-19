@@ -16,7 +16,7 @@ public class Tags {
     private Long tagNum;
     @ManyToOne
     @JoinColumn(name = "project_num")
-    private Projects projectNum;
+    private Projects project;
     private String tagName;
 
 }

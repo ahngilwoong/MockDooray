@@ -15,7 +15,7 @@ public class Comments {
     private Long commentNum;
     @ManyToOne
     @JoinColumn(name = "task_num")
-    private Tasks taskNum;
+    private Tasks task;
     private String commentContent;
     private String commentWriter;
 }

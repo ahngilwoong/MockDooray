@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@Table(name = "comments")
+@Table(name = "tasks")
 public class Tasks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Tasks {
 
     @ManyToOne
     @JoinColumn(name = "project_num")
-    private Projects projectNum;
+    private Projects project;
 
     @OneToOne
     @JoinColumn(name = "milestone_num")

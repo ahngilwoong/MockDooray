@@ -18,7 +18,7 @@ public class Milestones {
     private Long milestoneNum;
     @ManyToOne
     @JoinColumn(name = "project_num")
-    private Projects projectNum;
+    private Projects project;
     private String milestone_name;
     private LocalDate start_date;
     private LocalDate end_date;

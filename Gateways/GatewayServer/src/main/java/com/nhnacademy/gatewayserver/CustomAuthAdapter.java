@@ -15,6 +15,4 @@ public class CustomAuthAdapter {
         return new CustomResponse(users.getUserId(), users.getUserPwd(), "ROLE_MEMBER");
     }
 
-
-
 }

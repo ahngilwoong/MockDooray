@@ -9,10 +9,5 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Tasks,Long> {
-    List<Tasks> findByProjectNum_ProjectNum(Long projectNum);
-
-
-    @Query(value = "SELECT * FROM tasks WHERE project_num=:num", nativeQuery = true)
-    List<TaskResponse> findTaskByP(@Param("projectNum") Long num);
-
+    List<Tasks> findByProject_ProjectNum(Long projectNum);
 }

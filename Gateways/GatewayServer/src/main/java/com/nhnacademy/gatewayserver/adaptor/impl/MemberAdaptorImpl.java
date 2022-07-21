@@ -19,14 +19,6 @@ public class MemberAdaptorImpl implements MemberAdaptor {
 
     private final RestTemplate restTemplate;
     private HttpHeaders httpHeaders;
-    @Override
-    public Long findMemberNum(String userId) {
-        httpHeaders = new HttpHeaders();
-        HttpEntity request = new HttpEntity<>(httpHeaders);
-        ResponseEntity<Long>
-                response = restTemplate.exchange("http://localhost:1004/member/findmember/" + userId, HttpMethod.GET, request, Long.class);
-        return response.getBody();
-    }
 
     @Override
     public void registerMemberToProject(MemberRequest memberRequest) {

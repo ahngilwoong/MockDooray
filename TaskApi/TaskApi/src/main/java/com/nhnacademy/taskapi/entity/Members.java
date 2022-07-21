@@ -3,9 +3,7 @@ package com.nhnacademy.taskapi.entity;
 
 import lombok.*;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
@@ -15,8 +13,14 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Table(name = "members")
 public class Members {
-    @EmbeddedId
-    private MembersPk memberPk;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_num", nullable = false)
+    private Long memberNum;
+    @ManyToOne
+    @JoinColumn(name = "project_num")
+    private Projects project;
+
     private String memberId;
     private String memberName;
 }

@@ -9,6 +9,7 @@ import com.nhnacademy.taskapi.response.TaskResponse;
 import com.nhnacademy.taskapi.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +27,7 @@ public class TaskServiceImpl implements TaskService {
                 .taskName(request.getTaskName())
                 .taskContent(request.getTaskContent())
                 .taskWriter(request.getTaskWriter())
-                .projectNum(projectRepository.findById(request.getProjectNum()).get())
+                .project(projectRepository.findById(request.getProjectNum()).get())
                 .milestoneNum(milestoneRepository.findById(request.getMilestoneNum()).get())
                 .chargePerson(request.getChargePerson())
                 .build();
@@ -34,6 +35,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    @Transactional
     public void modifyTask(TaskRequest taskRequest) {
         Optional<Tasks> task = taskRepository.findById(taskRequest.getTaskNum());
         task.get().setTaskContent(taskRequest.getTaskContent());
@@ -47,7 +49,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<TaskResponse> findTaskList(Long projectNum) {
-        List<Tasks> tasksList = taskRepository.findByProjectNum_ProjectNum(projectNum);
+        List<Tasks> tasksList = taskRepository.findByProject_ProjectNum(projectNum);
         return tasksList.stream().map(tasks -> new TaskResponse(tasks)).collect(Collectors.toList());
     }
 

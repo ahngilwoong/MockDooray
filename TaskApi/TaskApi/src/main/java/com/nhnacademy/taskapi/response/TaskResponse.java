@@ -22,11 +22,12 @@ public class TaskResponse {
 
     public TaskResponse(Tasks tasks) {
         this.taskNum = tasks.getTaskNum();
-        this.projectNum = tasks.getProjectNum().getProjectNum();
+        this.projectNum = tasks.getProject().getProjectNum();
         this.milestoneNum = tasks.getMilestoneNum().getMilestoneNum();
         this.taskName = tasks.getTaskName();
         this.taskContent = tasks.getTaskContent();
         this.taskWriter = tasks.getTaskWriter();
         this.chargePerson = tasks.getChargePerson();
     }
+
 }

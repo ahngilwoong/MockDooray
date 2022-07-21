@@ -12,4 +12,6 @@ public interface AccountAdaptor {
     Optional<Users> registerUserWithAccountApi(UserRequest userRequest);
 
     Optional<Users> getUserByEmailFromAccountApi(String userEmail);
+
+    Long getUserIdByUserNum(String userId);
 }

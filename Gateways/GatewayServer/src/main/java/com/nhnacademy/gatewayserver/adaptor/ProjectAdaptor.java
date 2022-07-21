@@ -6,7 +6,7 @@ import com.nhnacademy.gatewayserver.response.ProjectResponse;
 import java.util.List;
 
 public interface ProjectAdaptor {
-     List<ProjectResponse> findProjectListByMemberNum(Long memberNum);
+     List<ProjectResponse> findProjectListByMemberId(String memberId);
      void createProject(ProjectRequest projectRequest);
      void updateProjectStatus(Long projectNum, String status);
      ProjectResponse projectDetail(Long projectNum);

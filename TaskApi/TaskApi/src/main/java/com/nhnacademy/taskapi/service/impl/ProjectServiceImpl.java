@@ -1,7 +1,6 @@
 package com.nhnacademy.taskapi.service.impl;
 
 import com.nhnacademy.taskapi.entity.Members;
-import com.nhnacademy.taskapi.entity.MembersPk;
 import com.nhnacademy.taskapi.entity.Projects;
 import com.nhnacademy.taskapi.repository.MemberRepository;
 import com.nhnacademy.taskapi.repository.ProjectRepository;
@@ -10,6 +9,8 @@ import com.nhnacademy.taskapi.response.ProjectResponse;
 import com.nhnacademy.taskapi.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Optional;
 
 @Service
@@ -38,6 +39,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    @Transactional
     public void createProject(ProjectRequest projectRequest) {
         Projects projects = projectRepository.save(
                 Projects.builder()
@@ -48,7 +50,7 @@ public class ProjectServiceImpl implements ProjectService {
         );
         memberRepository.save(
                 Members.builder()
-                        .memberPk(new MembersPk(1L,projects))
+                        .project(projects)
                         .memberId(projectRequest.getCreatedMemberId())
                         .memberName(projectRequest.getUserName())
                         .build());

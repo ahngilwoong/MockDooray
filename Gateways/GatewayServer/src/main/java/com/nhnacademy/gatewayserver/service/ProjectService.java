@@ -14,5 +14,5 @@ public interface ProjectService {
 
     List<ProjectResponse> findMemberBelongProject(String memberId);
 
-    void createProject(ProjectRequest projectRequest);
+    void createProject(ProjectRequest projectRequest,String memberId);
 }

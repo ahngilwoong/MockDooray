@@ -27,7 +27,6 @@ public class AccountAdaptorImpl implements AccountAdaptor {
 
     @Override
     public Optional<Users> registerUserWithAccountApi(UserRequest userRequest) {
-        System.out.println("api:"+userRequest);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<UserRequest> entity = new HttpEntity<>(userRequest,httpHeaders);
@@ -44,4 +43,14 @@ public class AccountAdaptorImpl implements AccountAdaptor {
             response = restTemplate.exchange("http://localhost:4885/account/email/" + userEmail, HttpMethod.GET, request, Users.class);
         return Optional.of(response.getBody());
     }
+
+    @Override
+    public Long getUserIdByUserNum(String userId) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        HttpEntity request = new HttpEntity<>(httpHeaders);
+        ResponseEntity<Long>
+                response = restTemplate.exchange("http://localhost:4885/account/user/" + userId, HttpMethod.GET, request, Long.class);
+        return response.getBody();
+    }
+
 }

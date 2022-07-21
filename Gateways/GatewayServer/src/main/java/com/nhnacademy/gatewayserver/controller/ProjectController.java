@@ -3,6 +3,7 @@ package com.nhnacademy.gatewayserver.controller;
 import com.nhnacademy.gatewayserver.request.ProjectRequest;
 import com.nhnacademy.gatewayserver.response.ProjectResponse;
 import com.nhnacademy.gatewayserver.service.ProjectService;
+import com.nhnacademy.gatewayserver.service.RegisterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -15,31 +16,31 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/mockdooray")
+@RequestMapping("/mock-dooray")
 public class ProjectController {
     private final ProjectService projectService;
     private final RedisTemplate<String,String> redisTemplate;
+    private final RegisterService registerService;
 
     @GetMapping("/projects")
     public String showMemberProjectList(HttpServletRequest httpServletRequest, Model model){
         String id = (String) redisTemplate.opsForHash().get(httpServletRequest.getSession().getId(),"username");
         List<ProjectResponse> projectResponses = projectService.findMemberBelongProject(id);
         model.addAttribute("list",projectResponses);
-        return "mockdooray";
+        return "mock-dooray";
     }
 
-    @PostMapping("/addproject")
+    @PostMapping("/add-project")
     public String postCreateProject(@ModelAttribute ProjectRequest projectRequest, HttpServletRequest httpServletRequest){
-        String id = (String) redisTemplate.opsForHash().get(httpServletRequest.getSession().getId(),"username");
-        projectRequest.setCreatedMemberId(id);
-        projectService.createProject(projectRequest);
-        return "redirect:/";
+        String memberId = (String) redisTemplate.opsForHash().get(httpServletRequest.getSession().getId(),"username");
+        projectService.createProject(projectRequest, memberId);
+        return "redirect:/mock-dooray";
     }
 
-    @GetMapping("/addproject")
+    @GetMapping("/add-project")
     public String getCreateProject(){
 
-        return "addproject";
+        return "add-project";
     }
 
     @GetMapping("/projects/{projectNum}")

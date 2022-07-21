@@ -12,10 +12,6 @@ import org.springframework.web.bind.annotation.*;
 public class MemberController {
     private final MemberService memberService;
 
-    @GetMapping("/findmember/{memberId}")
-    public Long findMemberNumByMemberId(@PathVariable String memberId){
-        return memberService.findMemberNumByMemberId(memberId);
-    }
 
     @PostMapping("/addmember")
     public void addMemberToProject(@RequestBody MemberRequest memberRequest){

@@ -1,5 +1,6 @@
 package com.nhnacademy.gatewayserver.service.impl;
 
+import com.nhnacademy.gatewayserver.adaptor.AccountAdaptor;
 import com.nhnacademy.gatewayserver.adaptor.MemberAdaptor;
 import com.nhnacademy.gatewayserver.adaptor.ProjectAdaptor;
 import com.nhnacademy.gatewayserver.request.MemberRequest;
@@ -18,6 +19,7 @@ import java.util.List;
 public class ProjectServiceImpl implements ProjectService {
     private final ProjectAdaptor projectAdaptor;
     private final MemberAdaptor memberAdaptor;
+    private final AccountAdaptor accountAdaptor;
 
     @Override
     public void modifyProjectStatus(Long projectNum, String status) {
@@ -31,12 +33,14 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<ProjectResponse> findMemberBelongProject(String memberId) {
-        List<ProjectResponse> responseList = projectAdaptor.findProjectListByMemberNum(memberAdaptor.findMemberNum(memberId));
+        List<ProjectResponse> responseList = projectAdaptor.findProjectListByMemberId(memberId);
         return responseList;
     }
 
     @Override
-    public void createProject(ProjectRequest projectRequest) {
+    public void createProject(ProjectRequest projectRequest, String memberId) {
+        Long createProjectMemberNum = accountAdaptor.getUserIdByUserNum(memberId);
+        projectRequest.setCreatedMemberId(memberId);
         projectAdaptor.createProject(projectRequest);
     }
 }

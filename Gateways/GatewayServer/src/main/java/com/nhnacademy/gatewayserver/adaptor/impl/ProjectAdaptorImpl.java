@@ -18,12 +18,13 @@ import java.util.List;
 public class ProjectAdaptorImpl implements ProjectAdaptor {
     private final RestTemplate restTemplate;
     private HttpHeaders httpHeaders;
+
     @Override
-    public List<ProjectResponse> findProjectListByMemberNum(Long memberNum) {
+    public List<ProjectResponse> findProjectListByMemberId(String memberId) {
         httpHeaders = new HttpHeaders();
         HttpEntity request = new HttpEntity<>(httpHeaders);
         ResponseEntity<List<ProjectResponse>>
-                response = restTemplate.exchange("http://localhost:1004/mockdooray/projects?memberNum=" + memberNum, HttpMethod.GET, request, new ParameterizedTypeReference<List<ProjectResponse>>() {});
+                response = restTemplate.exchange("http://localhost:1004/mock-dooray/projects?memberId=" + memberId, HttpMethod.GET, request, new ParameterizedTypeReference<List<ProjectResponse>>() {});
         return response.getBody();
     }
 
@@ -32,14 +33,14 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
         httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<ProjectRequest> entity = new HttpEntity<>(projectRequest,httpHeaders);
-        restTemplate.exchange("http://localhost:1004/mockdooray/createproject", HttpMethod.POST, entity, Void.class);
+        restTemplate.exchange("http://localhost:1004/mock-dooray/create-project", HttpMethod.POST, entity, Void.class);
     }
 
     @Override
     public void updateProjectStatus(Long projectNum, String status) {
         httpHeaders = new HttpHeaders();
         HttpEntity request = new HttpEntity<>(httpHeaders);
-        restTemplate.exchange("http://localhost:1004/mockdooray/projects/modify-status/"+projectNum+"?status="+status, HttpMethod.GET, request, Void.class);
+        restTemplate.exchange("http://localhost:1004/mock-dooray/projects/modify-status/"+projectNum+"?status="+status, HttpMethod.GET, request, Void.class);
 
     }
 
@@ -48,7 +49,7 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
         httpHeaders = new HttpHeaders();
         HttpEntity request = new HttpEntity<>(httpHeaders);
         ResponseEntity<ProjectResponse>
-                response = restTemplate.exchange("http://localhost:1004/mockdooray/projects/" + projectNum, HttpMethod.GET, request, ProjectResponse.class);
+                response = restTemplate.exchange("http://localhost:1004/mock-dooray/projects/" + projectNum, HttpMethod.GET, request, ProjectResponse.class);
         return response.getBody();
     }
 }

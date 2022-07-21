@@ -14,15 +14,14 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/mockdooray")
+@RequestMapping("/mock-dooray")
 public class ProjectController {
     private final MemberService memberService;
     private final ProjectService projectService;
 
     @GetMapping("/projects")
-    public List<ProjectResponse> projectsList(@RequestParam Long memberNum){
-        List<ProjectResponse> projects = memberService.findMemberProject(memberNum);
-        System.out.println(projects.get(0));
+    public List<ProjectResponse> projectsList(@RequestParam String memberId){
+        List<ProjectResponse> projects = memberService.findMemberProject(memberId);
         return projects;
     }
 
@@ -32,7 +31,7 @@ public class ProjectController {
         return projectResponse;
     }
 
-    @PostMapping("/createproject")
+    @PostMapping("/create-project")
     public void projectAdd(@RequestBody ProjectRequest projectRequest){
         projectService.createProject(projectRequest);
     }

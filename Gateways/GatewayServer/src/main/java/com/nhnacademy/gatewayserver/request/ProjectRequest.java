@@ -8,6 +8,6 @@ import lombok.*;
 @AllArgsConstructor
 public class ProjectRequest {
     private String projectName;
-    private String createdMemberId;
     private String userName;
+    private String createdMemberId;
 }

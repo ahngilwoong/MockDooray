@@ -39,7 +39,6 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void createProject(ProjectRequest projectRequest, String memberId) {
-        Long createProjectMemberNum = accountAdaptor.getUserIdByUserNum(memberId);
         projectRequest.setCreatedMemberId(memberId);
         projectAdaptor.createProject(projectRequest);
     }

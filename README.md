@@ -49,3 +49,9 @@ NHN 아카데미 김해 웹서비스 개발 1기 최종 평가 과제 Dooray 만
 + Task-api
   - 인증처리는 GateWay 에 위임합니다.
   - (RestApi) Project, Task, Comment, Tag, MileStone 정보를 관리하는 API 를 제공합니다.
+
+## 프로젝트 디자인
+
+![poster](./struct.png)
+![poster](./struct2.png)
+

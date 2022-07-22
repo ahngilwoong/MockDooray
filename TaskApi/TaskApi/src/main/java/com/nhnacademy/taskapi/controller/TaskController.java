@@ -12,13 +12,13 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/mockdooray/projects")
+@RequestMapping("/mock-dooray/projects")
 public class TaskController {
     private final TaskService taskService;
 
     @GetMapping("/{projectNum}/tasks")
     public List<TaskResponse> taskList(@PathVariable Long projectNum){
-        List<TaskResponse>  tasks = taskService.findTaskList(projectNum);
+        List<TaskResponse> tasks = taskService.findTaskList(projectNum);
         return tasks;
     }
 

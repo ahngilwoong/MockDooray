@@ -21,7 +21,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/mockdooray/**","/login")
+        http.authorizeRequests().antMatchers("/mock-dooray/**","/login")
                 .authenticated()
 //                .antMatchers("/dooray/**","/login")
 //                .authenticated()

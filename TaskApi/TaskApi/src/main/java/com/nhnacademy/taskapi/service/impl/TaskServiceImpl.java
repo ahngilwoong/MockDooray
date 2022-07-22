@@ -21,7 +21,11 @@ public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
     private final ProjectRepository projectRepository;
     private final MilestoneRepository milestoneRepository;
+
+
+
     @Override
+    @Transactional
     public void createTask(TaskRequest request) {
         Tasks tasks = Tasks.builder()
                 .taskName(request.getTaskName())

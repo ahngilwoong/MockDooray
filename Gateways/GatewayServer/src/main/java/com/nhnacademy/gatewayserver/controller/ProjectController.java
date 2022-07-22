@@ -34,7 +34,7 @@ public class ProjectController {
     public String postCreateProject(@ModelAttribute ProjectRequest projectRequest, HttpServletRequest httpServletRequest){
         String memberId = (String) redisTemplate.opsForHash().get(httpServletRequest.getSession().getId(),"username");
         projectService.createProject(projectRequest, memberId);
-        return "redirect:/mock-dooray";
+        return "redirect:/mock-dooray/projects";
     }
 
     @GetMapping("/add-project")

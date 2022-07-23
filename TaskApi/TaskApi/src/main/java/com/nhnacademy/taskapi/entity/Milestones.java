@@ -1,8 +1,7 @@
 package com.nhnacademy.taskapi.entity;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,6 +9,9 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "milestones")
 public class Milestones {
     @Id
@@ -19,7 +21,8 @@ public class Milestones {
     @ManyToOne
     @JoinColumn(name = "project_num")
     private Projects project;
-    private String milestone_name;
-    private LocalDate start_date;
-    private LocalDate end_date;
+    private String milestoneName;
+    private LocalDate startDate;
+    private LocalDate endDate;
+
 }

@@ -9,6 +9,7 @@ public interface ProjectService {
     void modifyProjectStatus(Long projectNum, String status);
 
     ProjectResponse findProject(Long projectNum);
+
     Projects findNoDtoProjectEntityForUpdate(Long projectNum);
 
     void createProject(ProjectRequest projectRequest);

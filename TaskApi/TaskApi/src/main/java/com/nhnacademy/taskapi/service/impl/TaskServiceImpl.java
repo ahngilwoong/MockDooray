@@ -43,6 +43,7 @@ public class TaskServiceImpl implements TaskService {
     public void modifyTask(TaskRequest taskRequest) {
         Optional<Tasks> task = taskRepository.findById(taskRequest.getTaskNum());
         task.get().setTaskContent(taskRequest.getTaskContent());
+        task.get().setTaskName(taskRequest.getTaskName());
         taskRepository.save(task.get());
     }
 
@@ -60,6 +61,8 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public TaskResponse findTask(Long taskNum) {
         Optional<Tasks> tasks = taskRepository.findById(taskNum);
-        return tasks.stream().map(tasks1 -> new TaskResponse(tasks1)).collect(Collectors.toList()).get(0);
+        return new TaskResponse(tasks.get());
     }
+
+
 }

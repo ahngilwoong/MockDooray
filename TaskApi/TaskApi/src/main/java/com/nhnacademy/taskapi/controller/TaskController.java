@@ -43,6 +43,4 @@ public class TaskController {
     public TaskResponse findTask(@PathVariable Long taskNum){
         return taskService.findTask(taskNum);
     }
-
-
 }

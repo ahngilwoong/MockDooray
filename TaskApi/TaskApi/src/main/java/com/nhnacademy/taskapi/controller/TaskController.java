@@ -34,13 +34,13 @@ public class TaskController {
         taskService.createTask(taskRequest);
     }
 
-    @PostMapping("/{projectNum}/tasks/modify")
+    @PostMapping("/{projectNum}/tasks/{taskNum}/modify")
     public void modifyTask(@RequestBody TaskRequest taskRequest){
         taskService.modifyTask(taskRequest);
     }
 
     @GetMapping("/{projectNum}/tasks/{taskNum}")
-    public TaskResponse findTask(@PathVariable Long taskNum){
+    public TaskResponse findTask(@PathVariable Long taskNum) {
         return taskService.findTask(taskNum);
     }
 }

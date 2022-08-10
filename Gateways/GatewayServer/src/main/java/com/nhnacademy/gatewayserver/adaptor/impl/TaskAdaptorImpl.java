@@ -20,7 +20,7 @@ public class TaskAdaptorImpl implements TaskAdaptor {
     private HttpHeaders httpHeaders;
 
     @Override
-    public List<TaskResponse> findProjectInTasks(Long projectNum) {
+    public List<TaskResponse> findTasks(Long projectNum) {
         httpHeaders = new HttpHeaders();
         HttpEntity request = new HttpEntity<>(httpHeaders);
         ResponseEntity<List<TaskResponse>>

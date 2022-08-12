@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+</head>
+<body>
+    <a th:text="|프로젝트 추가|"></a>
+    <form method="post" action="/mock-dooray/add-project">
+        프로젝트 이름 : <input type="text" name="projectName" /><br />
+        유저 실명 : <input type="text" name="userName" /><br />
+        <input type="hidden" name="createdMemberId" aria-valuetext=""/><br />
+        <input type="submit" />
+    </form>
+
+</body>
+</html>

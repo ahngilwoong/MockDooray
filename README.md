@@ -42,6 +42,7 @@ NHN 아카데미 김해 웹서비스 개발 1기 최종 평가 과제 Dooray 만
     - 인증 데이터는 Account-Api 를 사용합니다.
   - AccountApi 는 멤버의 정보를 관리합니다.
   - ProjectApi 는 Project, Task, Comment, Tag 를 관리 합니다.
+  
 + Account-api
   - 인증처리는 GateWay 에 위임합니다.
   - (RestApi)회원 정보를 제공합니다.
